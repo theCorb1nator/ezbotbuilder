@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,13 @@ namespace Teams.Commands
             Alias = alias;
         }
 
-        public Task<PreconditionResult> CheckPreconditionsAsync(ICommandContext context, IServiceProvider services = null)
+        public Task<PreconditionResult> CheckPreconditionsAsync(ITurnContext context, IServiceProvider services = null)
             => Command.CheckPreconditionsAsync(context, services);
-        public Task<ParseResult> ParseAsync(ICommandContext context, SearchResult searchResult, PreconditionResult preconditionResult = null, IServiceProvider services = null)
+        public Task<ParseResult> ParseAsync(ITurnContext context, SearchResult searchResult, PreconditionResult preconditionResult = null, IServiceProvider services = null)
             => Command.ParseAsync(context, Alias.Length, searchResult, preconditionResult, services);
-        public Task<IResult> ExecuteAsync(ICommandContext context, IEnumerable<object> argList, IEnumerable<object> paramList, IServiceProvider services)
+        public Task<IResult> ExecuteAsync(ITurnContext context, IEnumerable<object> argList, IEnumerable<object> paramList, IServiceProvider services)
             => Command.ExecuteAsync(context, argList, paramList, services);
-        public Task<IResult> ExecuteAsync(ICommandContext context, ParseResult parseResult, IServiceProvider services)
+        public Task<IResult> ExecuteAsync(ITurnContext context, ParseResult parseResult, IServiceProvider services)
             => Command.ExecuteAsync(context, parseResult, services);
     }
 }

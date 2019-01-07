@@ -27,7 +27,7 @@ namespace Teams.Commands
         private static readonly ConcurrentDictionary<Type, Func<IEnumerable<object>, object>> _arrayConverters = new ConcurrentDictionary<Type, Func<IEnumerable<object>, object>>();
 
         private readonly CommandService _commandService;
-        private readonly Func<ICommandContext, object[], IServiceProvider, CommandInfo, Task> _action;
+        private readonly Func<ITurnContext, object[], IServiceProvider, CommandInfo, Task> _action;
 
         /// <summary>
         ///     Gets the module that the command belongs in.
@@ -164,7 +164,7 @@ namespace Teams.Commands
             return PreconditionResult.FromSuccess();
         }
 
-        public async Task<ParseResult> ParseAsync(ICommandContext context, int startIndex, SearchResult searchResult, PreconditionResult preconditionResult = null, IServiceProvider services = null)
+        public async Task<ParseResult> ParseAsync(ITurnContext context, int startIndex, SearchResult searchResult, PreconditionResult preconditionResult = null, IServiceProvider services = null)
         {
             services = services ?? EmptyServiceProvider.Instance;
 
@@ -178,7 +178,7 @@ namespace Teams.Commands
             return await CommandParser.ParseArgsAsync(this, context, _commandService._ignoreExtraArgs, services, input, 0, _commandService._quotationMarkAliasMap).ConfigureAwait(false);
         }
 
-        public Task<IResult> ExecuteAsync(ICommandContext context, ParseResult parseResult, IServiceProvider services)
+        public Task<IResult> ExecuteAsync(ITurnContext context, ParseResult parseResult, IServiceProvider services)
         {
             if (!parseResult.IsSuccess)
                 return Task.FromResult((IResult)ExecuteResult.FromError(parseResult));
@@ -201,7 +201,7 @@ namespace Teams.Commands
 
             return ExecuteAsync(context, argList, paramList, services);
         }
-        public async Task<IResult> ExecuteAsync(ICommandContext context, IEnumerable<object> argList, IEnumerable<object> paramList, IServiceProvider services)
+        public async Task<IResult> ExecuteAsync(ITurnContext context, IEnumerable<object> argList, IEnumerable<object> paramList, IServiceProvider services)
         {
             services = services ?? EmptyServiceProvider.Instance;
 
@@ -237,9 +237,9 @@ namespace Teams.Commands
             }
         }
 
-        private async Task<IResult> ExecuteInternalAsync(ICommandContext context, object[] args, IServiceProvider services)
+        private async Task<IResult> ExecuteInternalAsync(ITurnContext context, object[] args, IServiceProvider services)
         {
-            await Module.Service._cmdLogger.DebugAsync($"Executing {GetLogText(context)}").ConfigureAwait(false);
+            //await Module.Service._cmdLogger.DebugAsync($"Executing {GetLogText(context)}").ConfigureAwait(false);
             try
             {
                 var task = _action(context, args, services, this);
@@ -289,11 +289,12 @@ namespace Teams.Commands
             }
             finally
             {
-                await Module.Service._cmdLogger.VerboseAsync($"Executed {GetLogText(context)}").ConfigureAwait(false);
+                //TODO add login back -- 
+                //await Module.Service._cmdLogger.VerboseAsync($"Executed {GetLogText(context)}").ConfigureAwait(false);
             }
         }
 
-        public object GetLogText(ICommandContext context)
+        public object GetLogText(ITurnContext context)
         {
             throw new NotImplementedException();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using Teams.Commands.Builders;
+using Microsoft.Bot.Builder;
 
 namespace Teams.Commands
 {
@@ -198,7 +199,7 @@ namespace Teams.Commands
 
             var createInstance = ReflectionUtils.CreateBuilder<IModuleBase>(typeInfo, service);
 
-            async Task<IResult> ExecuteCallback(ICommandContext context, object[] args, IServiceProvider services, CommandInfo cmd)
+            async Task<IResult> ExecuteCallback(ITurnContext context, object[] args, IServiceProvider services, CommandInfo cmd)
             {
                 var instance = createInstance(services);
                 instance.SetContext(context);

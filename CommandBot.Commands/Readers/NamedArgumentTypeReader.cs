@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -22,7 +23,7 @@ namespace Teams.Commands
             _commands = commands;
         }
 
-        public override async Task<TypeReaderResult> ReadAsync(ICommandContext context, string input, IServiceProvider services)
+        public override async Task<TypeReaderResult> ReadAsync(ITurnContext context, string input, IServiceProvider services)
         {
             var result = new T();
             var state = ReadState.LookingForParameter;
@@ -155,14 +156,14 @@ namespace Teams.Commands
             }
         }
 
-        private static async Task<object> ReadSingle(TypeReader reader, ICommandContext context, string arg, IServiceProvider services)
+        private static async Task<object> ReadSingle(TypeReader reader, ITurnContext context, string arg, IServiceProvider services)
         {
             var readResult = await reader.ReadAsync(context, arg, services).ConfigureAwait(false);
             return (readResult.IsSuccess)
                 ? readResult.BestMatch
                 : null;
         }
-        private static async Task<IEnumerable> ReadMultiple<TObj>(TypeReader reader, ICommandContext context, IEnumerable<string> args, IServiceProvider services)
+        private static async Task<IEnumerable> ReadMultiple<TObj>(TypeReader reader, ITurnContext context, IEnumerable<string> args, IServiceProvider services)
         {
             var objs = new List<TObj>();
             foreach (var arg in args)

@@ -7,6 +7,7 @@ using Microsoft.Bot.Builder.Teams;
 using System.Reflection;
 using Teams.Commands;
 using System;
+using Teams;
 
 namespace msteams.commandbot
 {
@@ -26,9 +27,9 @@ namespace msteams.commandbot
             {
                 var argPos = 0;
                 if (!(turnContext.Activity.MentionsRecipient() || turnContext.Activity.Text.HasStringPrefix("!", ref argPos))) return;
+                //ITurnContext context = new CommandContext(turnContext.Adapter, turnContext.Activity);
                 await _commands.ExecuteAsync(turnContext, argPos, _services);
                 // Echo back to the user whatever they typed.             
-                await turnContext.SendActivityAsync("Hello World", cancellationToken: cancellationToken);
             }
         }
     }

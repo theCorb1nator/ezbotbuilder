@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Teams.Commands
             Parameter,
             QuotedParameter
         }
-        public static async Task<ParseResult> ParseArgsAsync(CommandInfo command, ICommandContext context, bool ignoreExtraArgs, IServiceProvider services, string input, int startPos, IReadOnlyDictionary<char, char> aliasMap)
+        public static async Task<ParseResult> ParseArgsAsync(CommandInfo command, ITurnContext context, bool ignoreExtraArgs, IServiceProvider services, string input, int startPos, IReadOnlyDictionary<char, char> aliasMap)
         {
             ParameterInfo curParam = null;
             StringBuilder argBuilder = new StringBuilder(input.Length);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 
 namespace Teams.Commands
 {
@@ -10,7 +11,7 @@ namespace Teams.Commands
         /// <summary> Gets the command that caused the exception. </summary>
         public CommandInfo Command { get; }
         /// <summary> Gets the command context of the exception. </summary>
-        public ICommandContext Context { get; }
+        public ITurnContext Context { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CommandException" /> class using a
@@ -20,7 +21,7 @@ namespace Teams.Commands
         /// <param name="command">The command information.</param>
         /// <param name="context">The context of the command.</param>
         /// <param name="ex">The exception that interrupted the command execution.</param>
-        public CommandException(CommandInfo command, ICommandContext context, Exception ex)
+        public CommandException(CommandInfo command, ITurnContext context, Exception ex)
             : base($"Error occurred executing {command.GetLogText(context)}.", ex)
         {
             Command = command;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Teams.Commands.Builders
         private readonly List<string> _aliases;
 
         public ModuleBuilder Module { get; }
-        internal Func<ICommandContext, object[], IServiceProvider, CommandInfo, Task> Callback { get; set; }
+        internal Func<ITurnContext, object[], IServiceProvider, CommandInfo, Task> Callback { get; set; }
 
         public string Name { get; set; }
         public string Summary { get; set; }
@@ -39,7 +40,7 @@ namespace Teams.Commands.Builders
             _aliases = new List<string>();
         }
         //User-defined
-        internal CommandBuilder(ModuleBuilder module, string primaryAlias, Func<ICommandContext, object[], IServiceProvider, CommandInfo, Task> callback)
+        internal CommandBuilder(ModuleBuilder module, string primaryAlias, Func<ITurnContext, object[], IServiceProvider, CommandInfo, Task> callback)
             : this(module)
         {
             Teams.Preconditions.NotNull(primaryAlias, nameof(primaryAlias));

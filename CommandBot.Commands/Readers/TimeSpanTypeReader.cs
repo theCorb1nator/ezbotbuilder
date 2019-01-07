@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Globalization;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace Teams.Commands
         };
 
         /// <inheritdoc />
-        public override Task<TypeReaderResult> ReadAsync(ICommandContext context, string input, IServiceProvider services)
+        public override Task<TypeReaderResult> ReadAsync(ITurnContext context, string input, IServiceProvider services)
         {
             return (TimeSpan.TryParseExact(input.ToLowerInvariant(), Formats, CultureInfo.InvariantCulture, out var timeSpan))
                 ? Task.FromResult(TypeReaderResult.FromSuccess(timeSpan))

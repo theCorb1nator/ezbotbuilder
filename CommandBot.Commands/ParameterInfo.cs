@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.Bot.Builder;
 
 namespace Teams.Commands
 {
@@ -73,7 +74,7 @@ namespace Teams.Commands
             _reader = builder.TypeReader;
         }
 
-        public async Task<PreconditionResult> CheckPreconditionsAsync(ICommandContext context, object arg, IServiceProvider services = null)
+        public async Task<PreconditionResult> CheckPreconditionsAsync(ITurnContext context, object arg, IServiceProvider services = null)
         {
             services = services ?? EmptyServiceProvider.Instance;
 
@@ -87,7 +88,7 @@ namespace Teams.Commands
             return PreconditionResult.FromSuccess();
         }
 
-        public async Task<TypeReaderResult> ParseAsync(ICommandContext context, string input, IServiceProvider services = null)
+        public async Task<TypeReaderResult> ParseAsync(ITurnContext context, string input, IServiceProvider services = null)
         {
             services = services ?? EmptyServiceProvider.Instance;
             return await _reader.ReadAsync(context, input, services).ConfigureAwait(false);

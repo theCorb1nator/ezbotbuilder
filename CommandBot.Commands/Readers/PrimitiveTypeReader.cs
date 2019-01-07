@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Threading.Tasks;
 
 namespace Teams.Commands
@@ -32,7 +33,7 @@ namespace Teams.Commands
             _score = score;
         }
 
-        public override Task<TypeReaderResult> ReadAsync(ICommandContext context, string input, IServiceProvider services)
+        public override Task<TypeReaderResult> ReadAsync(ITurnContext context, string input, IServiceProvider services)
         {
             if (_tryParse(input, out T value))
                 return Task.FromResult(TypeReaderResult.FromSuccess(new TypeReaderValue(value, _score)));

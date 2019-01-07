@@ -37,8 +37,8 @@ namespace Teams.Commands
         ///         Should the command encounter any of the aforementioned error, this event will not be raised.
         ///     </para>
         /// </remarks>
-        public event Func<Optional<CommandInfo>, ICommandContext, IResult, Task> CommandExecuted { add { _commandExecutedEvent.Add(value); } remove { _commandExecutedEvent.Remove(value); } }
-        internal readonly AsyncEvent<Func<Optional<CommandInfo>, ICommandContext, IResult, Task>> _commandExecutedEvent = new AsyncEvent<Func<Optional<CommandInfo>, ICommandContext, IResult, Task>>();
+        public event Func<Optional<CommandInfo>, ITurnContext, IResult, Task> CommandExecuted { add { _commandExecutedEvent.Add(value); } remove { _commandExecutedEvent.Remove(value); } }
+        internal readonly AsyncEvent<Func<Optional<CommandInfo>, ITurnContext, IResult, Task>> _commandExecutedEvent = new AsyncEvent<Func<Optional<CommandInfo>, ITurnContext, IResult, Task>>();
 
         private readonly SemaphoreSlim _moduleLock;
         private readonly ConcurrentDictionary<Type, ModuleInfo> _typedModuleDefs;
@@ -119,12 +119,6 @@ namespace Teams.Commands
             _defaultTypeReaders[typeof(string)] =
                 new PrimitiveTypeReader<string>((string x, out string y) => { y = x; return true; }, 0);
 
-            //var entityTypeReaders = ImmutableList.CreateBuilder<Tuple<Type, Type>>();
-            //entityTypeReaders.Add(new Tuple<Type, Type>(typeof(IMessage), typeof(MessageTypeReader<>)));
-            //entityTypeReaders.Add(new Tuple<Type, Type>(typeof(IChannel), typeof(ChannelTypeReader<>)));
-            //entityTypeReaders.Add(new Tuple<Type, Type>(typeof(IRole), typeof(RoleTypeReader<>)));
-            //entityTypeReaders.Add(new Tuple<Type, Type>(typeof(IUser), typeof(UserTypeReader<>)));
-            //_entityTypeReaders = entityTypeReaders.ToImmutable();
         }
 
         //Modules
@@ -451,7 +445,7 @@ namespace Teams.Commands
         /// <param name="context">The context of the command.</param>
         /// <param name="argPos">The position of which the command starts at.</param>
         /// <returns>The result containing the matching commands.</returns>
-        public SearchResult Search(ICommandContext context, int argPos)
+        public SearchResult Search(ITurnContext context, int argPos)
             => Search(context.Activity.Text.Substring(argPos));
         /// <summary>
         ///     Searches for the command.
@@ -459,7 +453,7 @@ namespace Teams.Commands
         /// <param name="context">The context of the command.</param>
         /// <param name="input">The command string.</param>
         /// <returns>The result containing the matching commands.</returns>
-        public SearchResult Search(ICommandContext context, string input)
+        public SearchResult Search(ITurnContext context, string input)
             => Search(input);
         public SearchResult Search(string input)
         {

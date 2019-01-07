@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,6 @@ namespace Teams.Commands
         /// <returns>
         ///     A task that represents the asynchronous parsing operation. The task result contains the parsing result.
         /// </returns>
-        public abstract Task<TypeReaderResult> ReadAsync(ICommandContext context, string input, IServiceProvider services);
+        public abstract Task<TypeReaderResult> ReadAsync(ITurnContext context, string input, IServiceProvider services);
     }
 }

@@ -12,6 +12,12 @@ namespace Teams.CommandBot.Modules
         [Command("ping")]
         [Alias("pong", "hello")]
         public Task PingAsync()
-           => ReplyAsync("pong!");
+            => ReplyAsync("pong!");
+
+
+        [Command("next")]
+        [Alias("next", "next steps")]
+        public Task NextStepsAsync()
+            => ReplyAsync("Great work corbin, now to implement cool features like interactive cards and such");
     }
 }

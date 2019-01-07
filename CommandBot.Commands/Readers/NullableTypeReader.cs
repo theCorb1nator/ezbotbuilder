@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Teams.Commands
         }
 
         /// <inheritdoc />
-        public override async Task<TypeReaderResult> ReadAsync(ICommandContext context, string input, IServiceProvider services)
+        public override async Task<TypeReaderResult> ReadAsync(ITurnContext context, string input, IServiceProvider services)
         {
             if (string.Equals(input, "null", StringComparison.OrdinalIgnoreCase) || string.Equals(input, "nothing", StringComparison.OrdinalIgnoreCase))
                 return TypeReaderResult.FromSuccess(new T?());

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace Teams.Commands
         }
 
         /// <inheritdoc />
-        public override Task<TypeReaderResult> ReadAsync(ICommandContext context, string input, IServiceProvider services)
+        public override Task<TypeReaderResult> ReadAsync(ITurnContext context, string input, IServiceProvider services)
         {
             object enumValue;
 

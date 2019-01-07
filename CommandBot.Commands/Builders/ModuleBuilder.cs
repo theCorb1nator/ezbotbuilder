@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -85,7 +86,7 @@ namespace Teams.Commands.Builders
             _preconditions.Add(precondition);
             return this;
         }
-        public ModuleBuilder AddCommand(string primaryAlias, Func<ICommandContext, object[], IServiceProvider, CommandInfo, Task> callback, Action<CommandBuilder> createFunc)
+        public ModuleBuilder AddCommand(string primaryAlias, Func<ITurnContext, object[], IServiceProvider, CommandInfo, Task> callback, Action<CommandBuilder> createFunc)
         {
             var builder = new CommandBuilder(this, primaryAlias, callback);
             createFunc(builder);
