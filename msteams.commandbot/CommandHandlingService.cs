@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Teams;
 using Teams.Commands;
+using Teams.Net.Cards;
 
 namespace msteams.commandbot
 {
@@ -36,6 +37,7 @@ namespace msteams.commandbot
 
         public async Task InitializeAsync()
         {
+            await _commands.AddModuleAsync<CardsModule>(_services);
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
     }

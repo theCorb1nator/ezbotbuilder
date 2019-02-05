@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommandBot.Commands\Teams.Net.Commands.csproj" />
+    <ProjectReference Include="..\Teams.Net.Cards\Teams.Net.Cards.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-namespace Teams.CommandBot.Modules
+using System;
+using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Dialogs;
+
+namespace Microsoft.BotBuilderSamples
 {
     /// <summary>
     /// This is a helper class to support the state accessors for the bot.
     /// </summary>
-    public class CardsAccessors
+    public class CardsBotAccessors
     {
         /// <summary>
         /// The name of the dialog state.
         /// </summary>
         /// <remarks>Accessors require a unique name.</remarks>
         /// <value>The accessor name for the dialog state accessor.</value>
-        public static readonly string DialogStateName = $"{nameof(CardsAccessors)}.DialogState";
+        public static readonly string DialogStateName = $"{nameof(CardsBotAccessors)}.DialogState";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CardsBotAccessors"/> class.
