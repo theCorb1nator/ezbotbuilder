@@ -36,8 +36,7 @@ namespace Teams.Net.Cards
         [Command("rel")]
         public async Task DisplayReleasesAsync()
         {
-            var builder = new AdaptiveCardBuilder();
-            
+            var builder = new AdaptiveCardBuilder();          
             var reply = Context.Activity.CreateReply();
             //reply.Attachments = new List<Attachment>() { cardAttachment };
             await ReplyAsync(reply);
