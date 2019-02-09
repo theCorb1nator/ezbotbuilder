@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.2.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.2.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.2.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Teams" Version="4.0.0-beta1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EzBotBuilder.Net.Cards\EzBotBuilder.Net.Cards.csproj" />
+    <ProjectReference Include="..\EzBotBuilder.Net.Commands\EzBotBuilder.Net.Commands.csproj" />
+  </ItemGroup>
+
+</Project>

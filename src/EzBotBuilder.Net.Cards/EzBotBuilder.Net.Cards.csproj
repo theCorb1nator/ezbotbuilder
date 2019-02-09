@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>EzBotBuilder.Net.Cards</AssemblyName>
+    <RootNamespace>EzBotBuilder.Cards</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AdaptiveCards" Version="0.5.1" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.2.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EzBotBuilder.Net.Commands\EzBotBuilder.Net.Commands.csproj" />
+  </ItemGroup>
+
+</Project>
