@@ -1,5 +1,4 @@
 ﻿using EzBotBuilder;
-using EzBotBuilder.Cards;
 using EzBotBuilder.Commands;
 using Microsoft.Bot.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,7 +35,6 @@ namespace msteams.commandbot
 
         public async Task InitializeAsync()
         {
-            await _commands.AddModuleAsync<CardsModule>(_services);
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
     }

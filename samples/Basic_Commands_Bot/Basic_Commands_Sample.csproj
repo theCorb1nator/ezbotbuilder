@@ -16,8 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EzBotBuilder.Net.Cards\EzBotBuilder.Net.Cards.csproj" />
-    <ProjectReference Include="..\EzBotBuilder.Net.Commands\EzBotBuilder.Net.Commands.csproj" />
+    <ProjectReference Include="..\..\src\EzBotBuilder.Net.Commands\EzBotBuilder.Net.Commands.csproj" />
   </ItemGroup>
 
 </Project>

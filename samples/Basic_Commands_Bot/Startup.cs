@@ -1,5 +1,4 @@
-﻿using EzBotBuilder.Cards;
-using EzBotBuilder.Commands;
+﻿using EzBotBuilder.Commands;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
@@ -31,8 +30,7 @@ namespace msteams.commandbot
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<CommandService>()
-            .AddSingleton<CommandHandlingService>()
-            .AddSingleton<AdaptiveCardsService>();
+            .AddSingleton<CommandHandlingService>();
             services.AddBot<MyBot>(options =>
             {
                 var secretKey = Configuration.GetSection("botFileSecret")?.Value;
