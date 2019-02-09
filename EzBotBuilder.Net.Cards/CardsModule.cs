@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder;
+﻿using EzBotBuilder.Commands;
+using Microsoft.Bot.Builder;
 using System.Threading.Tasks;
 
 namespace EzBotBuilder.Cards

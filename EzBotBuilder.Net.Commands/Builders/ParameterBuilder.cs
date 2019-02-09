@@ -36,7 +36,7 @@ namespace EzBotBuilder.Commands.Builders
         internal ParameterBuilder(CommandBuilder command, string name, Type type)
             : this(command)
         {
-            Teams.Preconditions.NotNull(name, nameof(name));
+            EzBotBuilder.Preconditions.NotNull(name, nameof(name));
 
             Name = name;
             SetType(type);

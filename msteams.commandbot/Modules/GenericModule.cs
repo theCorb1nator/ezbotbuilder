@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Teams.Commands;
+using EzBotBuilder.Commands;
 
 namespace Teams.CommandBot.Modules
 {

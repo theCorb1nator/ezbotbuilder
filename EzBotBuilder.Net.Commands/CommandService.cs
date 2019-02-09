@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Teams.Net.Commands;
-using Teams.Logging;
-using Teams;
-using System.Threading;
+﻿using EzBotBuilder.Commands.Builders;
+using EzBotBuilder.Logging;
+using Microsoft.Bot.Builder;
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using EzBotBuilder.Commands.Builders;
-using Microsoft.Bot.Builder;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EzBotBuilder.Commands
 {

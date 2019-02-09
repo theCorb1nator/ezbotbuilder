@@ -43,8 +43,8 @@ namespace EzBotBuilder.Commands.Builders
         internal CommandBuilder(ModuleBuilder module, string primaryAlias, Func<ITurnContext, object[], IServiceProvider, CommandInfo, Task> callback)
             : this(module)
         {
-            Teams.Preconditions.NotNull(primaryAlias, nameof(primaryAlias));
-            Teams.Preconditions.NotNull(callback, nameof(callback));
+            EzBotBuilder.Preconditions.NotNull(primaryAlias, nameof(primaryAlias));
+            EzBotBuilder.Preconditions.NotNull(callback, nameof(callback));
 
             Callback = callback;
             PrimaryAlias = primaryAlias;

@@ -1,12 +1,11 @@
-﻿using Microsoft.Bot.Builder;
-using Microsoft.Bot.Configuration;
+﻿using EzBotBuilder;
+using EzBotBuilder.Cards;
+using EzBotBuilder.Commands;
+using Microsoft.Bot.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
-using Teams;
-using Teams.Commands;
-using Teams.Net.Cards;
 
 namespace msteams.commandbot
 {

@@ -5,7 +5,7 @@ using Microsoft.Bot.Schema;
 using Teams.Net.Commands;
 using Microsoft.Bot.Builder.Teams;
 using System.Reflection;
-using Teams.Commands;
+using EzBotBuilder.Commands;
 using System;
 using Teams;
 

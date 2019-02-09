@@ -45,7 +45,7 @@ namespace EzBotBuilder.Commands.Builders
         internal ModuleBuilder(CommandService service, ModuleBuilder parent, string primaryAlias)
             : this(service, parent)
         {
-            Teams.Preconditions.NotNull(primaryAlias, nameof(primaryAlias));
+            EzBotBuilder.Preconditions.NotNull(primaryAlias, nameof(primaryAlias));
 
             _aliases = new List<string> { primaryAlias };
         }
