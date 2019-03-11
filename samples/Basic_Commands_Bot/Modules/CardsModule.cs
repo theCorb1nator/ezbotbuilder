@@ -8,17 +8,12 @@ namespace EzBotBuilder.Cards
     {
         private AdaptiveCardsService _adaptiveCardsService;
 
-        //public CardsModule(AdaptiveCardsService adaptiveCardsService)
-        //{
-        //    _adaptiveCardsService = adaptiveCardsService;
-        //}
-
         public CardsModule()
         {
             _adaptiveCardsService = new AdaptiveCardsService();
         }
 
-        [Command("rel")]
+        [Command("card")]
         public async Task DisplayReleasesAsync()
         {
             var reply = Context.Activity.CreateReply();

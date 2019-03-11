@@ -27,7 +27,6 @@ namespace msteams.commandbot
             {
                 var argPos = 0;
                 if (!(turnContext.Activity.MentionsRecipient() || turnContext.Activity.Text.HasStringPrefix("!", ref argPos))) return;
-                //ITurnContext context = new CommandContext(turnContext.Adapter, turnContext.Activity);
                 await _commands.ExecuteAsync(turnContext, argPos, _services);
                 // Echo back to the user whatever they typed.             
             }
